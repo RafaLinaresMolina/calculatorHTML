@@ -31,10 +31,11 @@ body {
 
 .operator {
   height: 100%;
-  width: 1em;
-  justify-content: flex-end;
-  align-self: center;
-  
+  width: 10%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
 }
 
 .result {
@@ -42,9 +43,15 @@ body {
   align-items: flex-end;
   flex-flow: row-reverse;
   height: 1em;
-  width: 100%;
+  width:100%;
   font-size: 6em;
   font-family: lcd;
+}
+
+.numbers{
+  display: flex;
+  flex-flow: column;
+  width:100%;
 }
 
 .separator {

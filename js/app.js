@@ -1,48 +1,54 @@
-
 const auxResElement = document.getElementById("auxResult");
 const newResultElement = document.getElementById("finalResult");
 const operator = document.getElementById("operator");
 
 newResultElement.innerHTML = "";
 auxResElement.innerHTML = "";
-operator.innerHTML = ""
+operator.innerHTML = "";
 let isANewCalc = false;
 
 const validOperations = ["+", "-", "*", "/"];
 
 const pushedButton = (value) => {
   if (validOperations.includes(value)) {
-		makeOperation();
-    operator.innerHTML = value;
-    if (auxResElement.innerHTML.length !== 0) {
-      makeOperation();
+    if(value === "-" && newResultElement.innerHTML === ""){
+      addNumber(value);
     } else {
-      auxResElement.innerHTML = newResultElement.innerHTML;
-      newResultElement.innerHTML = "";
+      makeOperation();
+      operator.innerHTML = value;
+      if (auxResElement.innerHTML.length !== 0) {
+        makeOperation();
+      } else {
+        auxResElement.innerHTML = newResultElement.innerHTML;
+        newResultElement.innerHTML = "";
+      }
     }
+    
   } else {
     addNumber(value);
   }
 };
 
 const clearScreen = () => {
-	newResultElement.innerHTML = "";
-	auxResElement.innerHTML = "";
-	operator.innerHTML = "";
-}
+  newResultElement.innerHTML = "";
+  auxResElement.innerHTML = "";
+  operator.innerHTML = "";
+};
 
 const addNumber = (number) => {
-	if(newResultElement.innerHTML.length === 0){
-		newResultElement.innerHTML = number;
-	} else {
-		if(isANewCalc){
-			isANewCalc = false;
-			newResultElement.innerHTML = "";
-			newResultElement.innerHTML += number;
-		}else {
-			newResultElement.innerHTML += number;
-		}
-	}
+  if (newResultElement.innerHTML.length < 11) {
+    if (newResultElement.innerHTML.length === 0) {
+      newResultElement.innerHTML = number;
+    } else {
+      if (isANewCalc) {
+        isANewCalc = false;
+        newResultElement.innerHTML = "";
+        newResultElement.innerHTML += number;
+      } else {
+        newResultElement.innerHTML += number;
+      }
+    }
+  }
 };
 
 const isAuxEmpty = () => {
@@ -58,8 +64,15 @@ const makeSum = () => {
     auxResElement.innerHTML = newResultElement.innerHTML;
     newResultElement.innerHTML = "";
   } else if (!isNumberEmpty()) {
-    auxResElement.innerHTML = parseFloat(auxResElement.innerHTML) + parseFloat(newResultElement.innerHTML);
-    newResultElement.innerHTML = "";
+    let result = parseFloat(auxResElement.innerHTML) +
+    parseFloat(newResultElement.innerHTML);
+    if(result.toString().length > 11){
+      auxResElement.innerHTML = "-E: to long-";
+      newResultElement.innerHTML = "";
+    } else {
+      auxResElement.innerHTML = result;
+      newResultElement.innerHTML = "";
+    }    
   }
 };
 
@@ -68,8 +81,15 @@ const makeRes = () => {
     auxResElement.innerHTML = newResultElement.innerHTML;
     newResultElement.innerHTML = "";
   } else if (!isNumberEmpty()) {
-    auxResElement.innerHTML = parseFloat(auxResElement.innerHTML) - parseFloat(newResultElement.innerHTML);
-    newResultElement.innerHTML = "";
+    let result = parseFloat(auxResElement.innerHTML) -
+    parseFloat(newResultElement.innerHTML);
+    if(result.toString().length > 11){
+      auxResElement.innerHTML = "-E: to long-";
+      newResultElement.innerHTML = "";
+    } else {
+      auxResElement.innerHTML = result;
+      newResultElement.innerHTML = "";
+    }    
   }
 };
 
@@ -78,28 +98,41 @@ const makeMul = () => {
     auxResElement.innerHTML = newResultElement.innerHTML;
     newResultElement.innerHTML = "";
   } else if (!isNumberEmpty()) {
-    auxResElement.innerHTML = parseFloat(auxResElement.innerHTML) * parseFloat(newResultElement.innerHTML);
-    newResultElement.innerHTML = "";
+    let result = parseFloat(auxResElement.innerHTML) *
+    parseFloat(newResultElement.innerHTML);
+    if(result.toString().length > 11){
+      auxResElement.innerHTML = "-E: to long-";
+      newResultElement.innerHTML = "";
+    } else {
+      auxResElement.innerHTML = result;
+      newResultElement.innerHTML = "";
+    }    
   }
 };
-
 const makeDiv = () => {
   if (isAuxEmpty()) {
     auxResElement.innerHTML = newResultElement.innerHTML;
     newResultElement.innerHTML = "";
   } else if (!isNumberEmpty()) {
-    auxResElement.innerHTML = parseFloat(auxResElement.innerHTML) / parseFloat(newResultElement.innerHTML);
-    newResultElement.innerHTML = "";
+    let result = parseFloat(auxResElement.innerHTML) /
+    parseFloat(newResultElement.innerHTML);
+    if(result.toString().length > 11){
+      auxResElement.innerHTML = "-E: to long-";
+      newResultElement.innerHTML = "";
+    } else {
+      auxResElement.innerHTML = result;
+      newResultElement.innerHTML = "";
+    }    
   }
 };
 
 const obtainResult = () => {
   if (!isAuxEmpty() && !isNumberEmpty()) {
     makeOperation();
-		newResultElement.innerHTML = auxResElement.innerHTML;
-		auxResElement.innerHTML = "";
-		operator.innerHTML = ""
-		isANewCalc = true;
+    newResultElement.innerHTML = auxResElement.innerHTML;
+    auxResElement.innerHTML = "";
+    operator.innerHTML = "";
+    isANewCalc = true;
   }
 };
 
