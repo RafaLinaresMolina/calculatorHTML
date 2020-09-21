@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="displayArea">
+            <div class="result operator" id="operator">
+            </div>
+            <div class="numbers">
+                <div class="result" id="auxResult">
+                </div>
+                <div class="result" id="finalResult">
+                </div>
+            </div>
+        </div>
+        <div class="numPad">
+            <div class="row">
+                <button class="button" onclick="pushedButton('7')">7</button>
+                <button class="button" onclick="pushedButton('8')">8</button>
+                <button class="button" onclick="pushedButton('9')">9</button>
+                <button class="button buttonOperation" onclick="pushedButton('+')">+</button>
+            </div> 
+            <div class="row">
+                <button class="button" onclick="pushedButton('4')">4</button>
+                <button class="button" onclick="pushedButton('5')">5</button>
+                <button class="button" onclick="pushedButton('6')">6</button>
+                <button class="button buttonOperation" onclick="pushedButton('-')">-</button>
+            </div>
+            <div class="row">
+                <button class="button" onclick="pushedButton('1')">1</button>
+                <button class="button" onclick="pushedButton('2')">2</button>
+                <button class="button" onclick="pushedButton('3')">3</button>
+                <button class="button buttonOperation" onclick="pushedButton('*')">*</button>
+            </div>
+            <div class="row">
+                <button class="button" onclick="pushedButton('0')">0</button>
+                <button class="button" onclick="pushedButton('.')">.</button>
+                <button class="button buttonOperation" onclick="clearScreen()">c</button>
+                <button class="button buttonOperation" onclick="pushedButton('/')">/</button>
+            </div>
+            <button class="button buttonOperation equal" onclick="obtainResult()">=</button>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
