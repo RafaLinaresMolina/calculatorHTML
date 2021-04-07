@@ -52,6 +52,7 @@ const addNumber = (number) => {
 };
 
 const isAuxEmpty = () => {
+  if(auxResElement.innerHTML === )
   return auxResElement.innerHTML.length === 0;
 };
 
